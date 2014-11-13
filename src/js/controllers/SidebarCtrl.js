@@ -1,4 +1,19 @@
 app.controller('SidebarCtrl', ['$scope', '$mdSidenav', '$location', function($scope, $mdSidenav, $location) {
+	$scope.menuItems = [
+		{
+			href: "home",
+			name: "Home"
+		},
+		{
+			href: "shoppinglist",
+			name: "Shopping List"
+		},
+		{
+			href: "tasks",
+			name: "Tasks"
+		}
+	];
+
   $scope.toggleSidebar = function() {
   	$mdSidenav('left').toggle();
   };

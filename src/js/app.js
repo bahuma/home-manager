@@ -10,6 +10,10 @@ app.config(['$routeProvider', function($routeProvider) {
         		templateUrl: "templates/shoppinglist.html",
         		controller: "ShoppingListCtrl"
         })
+        .when('/tasks', {
+        		templateUrl: "templates/tasks.html",
+        		controller: "TasksCtrl"
+        })
         .otherwise({
             redirectTo: "/home"
         });
