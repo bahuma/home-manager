@@ -6,6 +6,10 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: "templates/home.html",
             controller: "HomeCtrl"
         })
+        .when('/shoppinglist', {
+        		templateUrl: "templates/shoppinglist.html",
+        		controller: "ShoppingListCtrl"
+        })
         .otherwise({
             redirectTo: "/home"
         });

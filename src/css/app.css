@@ -1,4 +1,10 @@
-#shop-list md-item md-button {
+#menu md-button {
 	display: block;
 	text-align: left;
+	border-radius: 0;
+	padding: 10px;
+}
+
+#menu md-button.active {
+	background-color: rgba(158,158,158,0.2);
 }
