@@ -5,6 +5,10 @@ app.controller('SidebarCtrl', ['$scope', '$mdSidenav', '$location', function($sc
 			name: "Home"
 		},
 		{
+			href: "calendar",
+			name: "Calendar"
+		},
+		{
 			href: "shoppinglist",
 			name: "Shopping List"
 		},

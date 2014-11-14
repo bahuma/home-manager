@@ -10,6 +10,10 @@ app.config(['$routeProvider', function($routeProvider) {
         		templateUrl: "templates/shoppinglist.html",
         		controller: "ShoppingListCtrl"
         })
+        .when('/calendar', {
+        		templateUrl: "templates/calendar.html",
+        		controller: "CalendarCtrl"
+        })
         .when('/tasks', {
         		templateUrl: "templates/tasks.html",
         		controller: "TasksCtrl"
