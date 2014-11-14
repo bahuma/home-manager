@@ -12,9 +12,9 @@
         <link rel="stylesheet" href="css/app.css">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     </head>
-    <body ng-app="HomePlanner">
+    <body ng-app="HomePlanner" layout="vertical" flex>
         
-        <div layout="horizontal" ng-controller="SidebarCtrl">
+        <div layout="horizontal" ng-controller="SidebarCtrl" flex>
             <md-sidenav component-id="left" class="md-sidenav-left md-whiteframe-z2">
                 <md-toolbar ng-click="closeSidebar()" md-theme="indigo">
                     <h1 class="md-toolbar-tools">Menü</h1>
@@ -26,7 +26,7 @@
                 </div>
             </md-sidenav>
 
-            <div ng-view flex></div>
+            <div ng-view flex layout="vertical"></div>
         </div>
         
         <script src="https://apis.google.com/js/api.js"></script>
@@ -48,6 +48,6 @@
         <script src="js/controllers/ShoppingListCtrl.js"></script>
         <script src="js/controllers/TasksCtrl.js"></script>
         <script src="js/controllers/CalendarCtrl.js"></script>
-        
+        <script src="js/controllers/DialogShoppinglistAddCtrl.js"></script>
     </body>
 </html>
