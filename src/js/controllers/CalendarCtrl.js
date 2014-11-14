@@ -1,4 +1,6 @@
 app.controller('CalendarCtrl', function($scope, Calendar, GAPI) {
+    $scope.calendars = [{summary: "test"}, {summary: "bla"}];
+    
     
     $scope.authorize = function() {
         GAPI.init();
@@ -6,9 +8,9 @@ app.controller('CalendarCtrl', function($scope, Calendar, GAPI) {
     
     $scope.getCalendarList = function() {
         Calendar.getCalendarList().then(function(data) {
-            console.log(data)
+            $scope.calendars = data.items;
+            
+            console.log($scope.calendars);
         });
-    }
-    
-    console.log($scope.videos);
+    };
 });

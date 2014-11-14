@@ -10,4 +10,12 @@
 <md-content class="md-padding">
 	<md-button ng-click="authorize()">Authorize</md-button>
 	<md-button ng-click="getCalendarList()">Get Calendar List</md-button>
+	
+	<table id="calendar">
+		<thead>
+			<tr>
+				<th ng-repeat="calendar in calendars">{{calendar.summary}}</hd>
+			</tr>
+		</thead>
+	</table>
 </md-content>
