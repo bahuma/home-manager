@@ -1,3 +1,3 @@
-app.controller('TasksCtrl', function($scope) {
+app.controller('TasksCtrl', ['$scope', function($scope) {
 
-});
+}]);

@@ -1,4 +1,4 @@
-app.controller('CalendarCtrl', function($scope, Calendar, GAPI) {
+app.controller('CalendarCtrl', ['$scope', 'Calendar', 'GAPI', function($scope, Calendar, GAPI) {
     $scope.calendars = [{summary: "test"}, {summary: "bla"}];
     
     
@@ -13,4 +13,4 @@ app.controller('CalendarCtrl', function($scope, Calendar, GAPI) {
             console.log($scope.calendars);
         });
     };
-});
+}]);

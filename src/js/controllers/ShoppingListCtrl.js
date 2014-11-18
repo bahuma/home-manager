@@ -1,4 +1,4 @@
-app.controller('ShoppingListCtrl', function($scope, $mdDialog) {
+app.controller('ShoppingListCtrl', ['$scope', '$mdDialog', function($scope, $mdDialog) {
     $scope.items = [
         "Käse",
         "Milch",
@@ -22,4 +22,4 @@ app.controller('ShoppingListCtrl', function($scope, $mdDialog) {
             $scope.items.push(itemName);
         });
     }
-});
+}]);
