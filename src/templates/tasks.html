@@ -6,3 +6,17 @@
 		<h1 class="md-toolbar-tools">Tasks</h1>
 	</div>
 </md-toolbar>
+
+<md-content class="md-padding" layout="row" layout-phone="column" layout-padding id="tasks" flex>
+	<md-card ng-repeat="user in users" flex>
+		<h2>{{user.name}}</h2>
+		<md-list>
+			<md-item flex ng-repeat="fixedTask in user.fixedTasks">{{fixedTask}}<md-icon icon="img/pin.svg" style="width:7px;height:12px" class="pinned"></md-icon></md-item>
+			<md-item flex ng-repeat="task in getTasksFromGroup(user.taskGroup).tasks">{{task}}</md-item>
+		</md-list>
+	</md-card>
+	
+	<md-button class="md-fab md-primary md-fab-bottom-right" ng-click="weekChange()" arial-label="Add" md-theme="green">
+		<md-icon icon="img/refresh.svg" style="width: 24px; height: 24px;"></md-icon>
+	</md-button>
+</md-content>
