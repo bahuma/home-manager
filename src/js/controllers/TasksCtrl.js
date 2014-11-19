@@ -60,4 +60,28 @@ app.controller('TasksCtrl', ['$scope', function($scope) {
                 return $scope.taskGroups[i];    
         }
     };
+    
+    $scope.weekChange = function() {
+        console.log("bla");
+        var i;
+        var temp = "";
+        var temp2 = "";
+        
+        for(i = 0; i < $scope.users.length; ++i) {
+            if (temp === "") {
+                temp = $scope.users[i].taskGroup;
+            }
+            else {
+                temp2 = $scope.users[i].taskGroup;
+                $scope.users[i].taskGroup = temp;
+                
+                temp = temp2;
+                
+                if (i == $scope.users.length - 1) {
+                    $scope.users[0].taskGroup = temp;
+                }
+            }
+            
+        }
+    }
 }]);
