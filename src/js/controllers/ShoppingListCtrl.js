@@ -1,15 +1,14 @@
-app.controller('ShoppingListCtrl', ['$scope', '$mdDialog', function($scope, $mdDialog) {
-    $scope.items = [
-        "Käse",
-        "Milch",
-        "Eier",
-        "Klopapier"
-    ];
+app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', function($scope, HomeManagerApi, $mdDialog) {
     
-    $scope.removeItem = function (id) {
-        console.log(id);
+    HomeManagerApi.shoppinglist.getAllItems().success(function(data){
+        $scope.items = data;
+    });
+    
+    $scope.removeItem = function (index) {
         
-        $scope.items.splice(id, 1);
+        HomeManagerApi.shoppinglist.deleteItem($scope.items[index]._id)
+        
+        $scope.items.splice(index, 1);
     }
     
     $scope.showAddDialog = function($event) {
@@ -19,7 +18,11 @@ app.controller('ShoppingListCtrl', ['$scope', '$mdDialog', function($scope, $mdD
           controller: 'DialogShoppinglistAddCtrl'
         })
         .then(function(itemName) {
-            $scope.items.push(itemName);
+            if (itemName) {
+                HomeManagerApi.shoppinglist.createItem(itemName).success(function(data) {
+                    $scope.items.push(data.createdObject);    
+                });
+            }
         });
     }
 }]);

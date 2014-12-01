@@ -8,9 +8,9 @@
 </md-toolbar>
 
 <md-content class="md-padding" layout="vertical" flex>
-	<md-checkbox ng-repeat="(key, item) in items" aria-label="{{item}}" ng-click="removeItem(key)">{{item}}</md-checkbox>
+	<md-checkbox ng-repeat="(index, item) in items" aria-label="{{item.name}}" ng-click="removeItem(index)">{{item.name}}</md-checkbox>
 	
-	<md-button class="md-fab md-primary md-fab-bottom-right" ng-click="showAddDialog($event)" arial-label="Add" md-theme="deep-orange">
+	<md-button class="md-fab md-primary md-fab-bottom-right" ng-click="showAddDialog($event)" aria-label="Add" md-theme="deep-orange">
 		<md-icon icon="img/add.svg" style="width: 24px; height: 24px;"></md-icon>
 	</md-button>
 </md-content>
