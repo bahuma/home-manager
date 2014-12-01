@@ -2,7 +2,8 @@ app.controller('DialogShoppinglistAddCtrl', ['$scope', '$mdDialog', function($sc
     $scope.itemName = "";
     
     $scope.saveItem = function() {
-        $mdDialog.hide($scope.itemName);
+        if ($scope.itemName !== "")
+            $mdDialog.hide($scope.itemName);
     };
     $scope.closeDialog = function() {
         $mdDialog.hide(false);
