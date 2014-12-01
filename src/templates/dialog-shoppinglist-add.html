@@ -3,7 +3,10 @@
         <md-text-float ng-model="itemName" label="What would you like to add?" focus></md-text-float>
     </md-content>
     <div class="md-actions">
-        <md-button ng-click="closeDialog()">
+        <md-button aria-label="Close" ng-click="closeDialog()">
+            Close
+        </md-button>
+        <md-button class="md-primary" aria-label="Save" ng-click="saveItem()">
             Save
         </md-button>
     </div>
