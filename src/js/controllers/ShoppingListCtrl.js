@@ -1,8 +1,9 @@
 app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', function($scope, HomeManagerApi, $mdDialog) {
-    
-    HomeManagerApi.shoppinglist.getAllItems().success(function(data){
-        $scope.items = data;
-    });
+    $scope.loadItems = function () {
+        HomeManagerApi.shoppinglist.getAllItems().success(function(data){
+            $scope.items = data;
+        }); 
+    }
     
     $scope.removeItem = function (index) {
         
@@ -25,4 +26,8 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', fun
             }
         });
     }
+    
+    
+    // Startup
+    $scope.loadItems();
 }]);
