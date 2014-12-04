@@ -2,6 +2,6 @@ Home Manager
 ============
 The Home-Manager supports following features:
 - [ ] Calendar
-- [ ] Shopping List
-- [ ] Work
+- [x] Shopping List
+- [x] Tasks
 - [ ] E-Mail
