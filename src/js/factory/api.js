@@ -14,6 +14,9 @@ app.factory('HomeManagerApi', ['$http', function($http) {
         },
         deleteItem : function(id) {
             return $http.delete(urlBase + '/shoppinglist/' + id);
+        },
+        search : function(phrase) {
+            return $http.get(urlBase + '/shoppinglist/search/' + phrase);
         }
     };
     
