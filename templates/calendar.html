@@ -1,0 +1,22 @@
+<md-toolbar class="app-toolbar" md-theme="red">
+	<div class="md-toolbar-tools">
+		<md-button class="menu-icon" ng-click="$parent.toggleSidebar()" aria-label="Open Sidebar">
+			<md-icon icon="img/menu.svg" style="width: 24px; height: 24px;"></md-icon>
+		</md-button>
+		<h1 class="md-toolbar-tools">Calendar</h1>
+	</div>
+</md-toolbar>
+
+<md-content class="md-padding">
+	<md-button ng-click="authorize()">Authorize</md-button>
+	<md-button ng-click="getCalendarList()">Get Calendar List</md-button>
+	
+	<table id="calendar">
+		<thead>
+			<tr>
+				<th ng-repeat="calendar in calendars">{{calendar.summary}}</hd>
+			</tr>
+			
+		</thead>
+	</table>
+</md-content>
