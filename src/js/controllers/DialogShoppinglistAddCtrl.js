@@ -10,8 +10,16 @@ app.controller('DialogShoppinglistAddCtrl', ['$scope', '$mdDialog', 'HomeManager
         $mdDialog.hide(false);
     }
     $scope.autocomplete = function() {
-        HomeManagerApi.shoppinglist.search($scope.itemName).success(function(data) {
-           $scope.autocompleteItems = data; 
-        });
+        if ($scope.itemName != "") {
+            HomeManagerApi.shoppinglist.search($scope.itemName).success(function(data) {
+               $scope.autocompleteItems = data; 
+            });
+        } else {
+            $scope.autocompleteItems = "";
+        }
+    }
+    $scope.setItemName = function(val) {
+        $scope.itemName = val;
+        $scope.autocompleteItems = [];
     }
 }]);
