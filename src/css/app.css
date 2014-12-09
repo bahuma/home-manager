@@ -19,4 +19,5 @@ md-icon.pinned {
 
 #autocomplete md-item {
 	display: block;
+	cursor: pointer;
 }
