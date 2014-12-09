@@ -16,3 +16,8 @@ md-icon.pinned {
 #tasks md-list md-item {
 	display: block;
 }
+
+#autocomplete md-item {
+	display: block;
+	cursor: pointer;
+}
