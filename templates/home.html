@@ -6,3 +6,13 @@
 		<h1 class="md-toolbar-tools">Home</h1>
 	</div>
 </md-toolbar>
+
+<md-content class="md-padding">
+	
+	<flex-slider slide="image in images track by $index" animation="slide">
+		<li>
+	        <img ng-src="{{image.url}}">
+	        {{image.title}}
+	    </li>
+	</flex-slider>
+</md-content>
