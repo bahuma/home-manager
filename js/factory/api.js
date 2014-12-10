@@ -5,7 +5,7 @@ app.factory('HomeManagerApi', ['$http', function($http) {
     
     HomeManagerApi.shoppinglist = {
         getAllItems : function() {
-            return $http.get(urlBase + '/shoppinglist')
+            return $http.get(urlBase + '/shoppinglist');
         },
         createItem : function(name) {
             return $http.post(urlBase + '/shoppinglist', {
@@ -19,6 +19,12 @@ app.factory('HomeManagerApi', ['$http', function($http) {
             return $http.get(urlBase + '/shoppinglist/search/' + phrase);
         }
     };
+    
+    HomeManagerApi.home = {
+        getImages : function() {
+            return $http.get(urlBase + '/home/images');
+        }
+    }
     
     return HomeManagerApi;
 }]);
