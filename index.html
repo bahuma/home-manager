@@ -17,8 +17,8 @@
     </head>
     <body ng-app="HomePlanner" layout="vertical" flex>
         
-        <div layout="horizontal" ng-controller="SidebarCtrl" flex>
-            <md-sidenav component-id="left" class="md-sidenav-left md-whiteframe-z2">
+        <div ng-controller="SidebarCtrl" layout="row" flex>
+            <md-sidenav md-component-id="left" class="md-sidenav-left md-whiteframe-z2">
                 <md-toolbar ng-click="closeSidebar()" md-theme="indigo">
                     <h1 class="md-toolbar-tools">Menü</h1>
                 </md-toolbar>
@@ -29,7 +29,7 @@
                 </div>
             </md-sidenav>
 
-            <div ng-view flex layout="vertical"></div>
+            <div ng-view layout="column" flex></div>
         </div>
         
         <script src="https://apis.google.com/js/api.js"></script>

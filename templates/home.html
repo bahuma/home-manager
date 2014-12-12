@@ -7,12 +7,14 @@
 	</div>
 </md-toolbar>
 
-<md-content class="md-padding">
-	
-	<flex-slider slide="image in images track by $index" animation="slide">
-		<li>
-	        <img ng-src="{{image.url}}">
-	        {{image.title}}
-	    </li>
-	</flex-slider>
+<md-content>
+	<div layout="horizontal">
+		<flex-slider slide="image in images track by $index" animation="slide" id="home-slider" flex="70" hide show-gt-sm>
+			<li>
+		        <img ng-src="{{image.url}}">
+		        {{image.title}}
+		    </li>
+		</flex-slider>
+		<section flex="30">Message-Text</section>
+	</div>
 </md-content>

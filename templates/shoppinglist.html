@@ -11,7 +11,7 @@
 	</div>
 </md-toolbar>
 
-<md-content class="md-padding" layout="vertical" flex>
+<md-content class="md-padding" layout="column" flex>
 	<md-checkbox ng-repeat="(index, item) in items" aria-label="{{item.name}}" ng-click="removeItem(index)">{{item.name}}</md-checkbox>
 	
 	<md-button class="md-fab md-primary md-fab-bottom-right" ng-click="showAddDialog($event)" aria-label="Add" md-theme="deep-orange">
