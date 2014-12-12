@@ -16,16 +16,20 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: "HomeCtrl"
         })
         .when('/shoppinglist', {
-        		templateUrl: "templates/shoppinglist.html",
-        		controller: "ShoppingListCtrl"
+        	templateUrl: "templates/shoppinglist.html",
+        	controller: "ShoppingListCtrl"
         })
         .when('/calendar', {
-        		templateUrl: "templates/calendar.html",
-        		controller: "CalendarCtrl"
+        	templateUrl: "templates/calendar.html",
+        	controller: "CalendarCtrl"
         })
         .when('/tasks', {
-        		templateUrl: "templates/tasks.html",
-        		controller: "TasksCtrl"
+        	templateUrl: "templates/tasks.html",
+        	controller: "TasksCtrl"
+        })
+        .when('/settings', {
+            templateUrl: "templates/settings.html",
+            controller: "SettingsCtrl"
         })
         .otherwise({
             redirectTo: "/home"
