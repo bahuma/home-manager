@@ -83,5 +83,10 @@ app.controller('TasksCtrl', ['$scope', function($scope) {
             }
             
         }
+    };
+    
+    $scope.hasUserFixedTasks = function(user) {
+        if(user.fixedTasks.length > 0)
+        return true;
     }
 }]);

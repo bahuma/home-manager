@@ -16,10 +16,6 @@ md-icon.pinned {
 	margin: 0 0 0 5px;
 }
 
-#tasks md-list md-item {
-	display: block;
-}
-
 #autocomplete md-item {
 	display: block;
 	cursor: pointer;
