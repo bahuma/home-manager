@@ -17,6 +17,11 @@ app.factory('HomeManagerApi', ['$http', function($http) {
         },
         search : function(phrase) {
             return $http.get(urlBase + '/shoppinglist/search/' + phrase);
+        },
+        mail : function(email) {
+            return $http.post(urlBase + '/shoppinglist/mail', {
+                email: email
+            });
         }
     };
     
