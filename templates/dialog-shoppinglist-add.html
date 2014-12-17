@@ -3,7 +3,7 @@
         <md-text-float ng-model="itemName" ng-keyup="autocomplete()" label="What would you like to add?" focus></md-text-float>
         <md-list id="autocomplete">
             <md-item ng-repeat="item in autocompleteItems" ng-click="setItemName(item.name)">{{item.name}}</md-item>
-        </ul>
+        </md-listl>
     </md-content>
     <div class="md-actions">
         <md-button aria-label="Close" ng-click="closeDialog()">

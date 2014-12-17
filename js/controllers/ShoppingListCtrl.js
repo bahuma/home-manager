@@ -1,4 +1,4 @@
-app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', function($scope, HomeManagerApi, $mdDialog) {
+app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$mdBottomSheet', function($scope, HomeManagerApi, $mdDialog, $mdBottomSheet) {
     $scope.loadItems = function () {
         HomeManagerApi.shoppinglist.getAllItems().success(function(data){
             $scope.items = data;
@@ -12,6 +12,20 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', fun
         $scope.items.splice(index, 1);
     }
     
+    $scope.sendMail = function() {
+        $mdDialog.show({
+          templateUrl: 'templates/dialog-shoppinglist-mail.html',
+          controller: 'DialogShoppinglistMailCtrl'
+        })
+        .then(function(email) {
+            if (email) {
+                HomeManagerApi.shoppinglist.mail(email).success(function(data) {
+                    console.log(data);    
+                });
+            }
+        });
+    }
+    
     $scope.showAddDialog = function($event) {
         $mdDialog.show({
           targetEvent: $event,
@@ -23,6 +37,21 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', fun
                 HomeManagerApi.shoppinglist.createItem(itemName).success(function(data) {
                     $scope.items.push(data.createdObject);    
                 });
+            }
+        });
+    }
+    
+    $scope.showBottomSheet = function($event) {
+        console.log('yolo');
+        $mdBottomSheet.show({
+            targetEvent: $event,
+            templateUrl: 'templates/bottom-sheet-shoppinglist.html',
+            controller: 'BottomSheetShoppinglistCtrl'
+        }).then(function(data) {
+            switch (data.name) {
+                case 'mail':
+                    $scope.sendMail();
+                    break;
             }
         });
     }
