@@ -1,4 +1,4 @@
-app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$mdBottomSheet', function($scope, HomeManagerApi, $mdDialog, $mdBottomSheet) {
+app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$mdBottomSheet', '$mdToast', function($scope, HomeManagerApi, $mdDialog, $mdBottomSheet, $mdToast) {
     $scope.loadItems = function () {
         HomeManagerApi.shoppinglist.getAllItems().success(function(data){
             $scope.items = data;
@@ -20,7 +20,14 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
         .then(function(email) {
             if (email) {
                 HomeManagerApi.shoppinglist.mail(email).success(function(data) {
-                    console.log(data);    
+                    if (data.sent) {
+                        $mdToast.show($mdToast.simple().content(data.message));
+                    }
+                    else
+                    {
+                        $mdToast.show($mdToast.simple().content(data.message));
+                        console.log(data.error)
+                    }
                 });
             }
         });
@@ -42,7 +49,6 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
     }
     
     $scope.showBottomSheet = function($event) {
-        console.log('yolo');
         $mdBottomSheet.show({
             targetEvent: $event,
             templateUrl: 'templates/bottom-sheet-shoppinglist.html',
