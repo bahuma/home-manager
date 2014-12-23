@@ -13,27 +13,21 @@
 
 <md-content flex>
 	
-	
 	<div ng-repeat="user in users">
-		<md-toolbar class="md-theme-light">
-			<h2 class="md-toolbar-tools">
-		    	<span>{{user.name}}</span>
-		    </h2>
-		</md-toolbar>
-		<md-list>
-			<md-item flex ng-repeat="fixedTask in user.fixedTasks">
-				<md-item-content class="md-tile-content">
+		
+		<md-card>
+			<h1>{{user.name}}</h1>
+			<ul>
+				<li ng-repeat="fixedTask in user.fixedTasks">
 					{{fixedTask}}<md-icon icon="img/pin.svg" style="width:7px;height:12px" class="pinned"></md-icon>
-				</md-item-content>
-			</md-item>
+				</li>
+			</ul>
 			
-			<md-divider ng-if="hasUserFixedTasks(user)"></md-divider>
-			
-			<md-item flex ng-repeat="task in getTasksFromGroup(user.taskGroup).tasks">
-				<md-item-content class="md-tile-content">
+			<ul>
+				<li ng-repeat="task in getTasksFromGroup(user.taskGroup).tasks">
 					{{task}}
-				</md-item-content>
-			</md-item>
-		</md-list>
+				</li>
+			</ul>
+		</md-card>
 	</div>
 </md-content>

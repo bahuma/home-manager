@@ -1,4 +1,10 @@
-var app = angular.module("HomePlanner", ['gapi', 'ngRoute', 'ngAnimate', 'ngMaterial', 'angular-flexslider']);
+var app = angular.module("HomePlanner", [
+    'gapi', 
+    'ngRoute', 
+    'ngAnimate', 
+    'ngMaterial', 
+    'angular-flexslider'
+]);
 
 app.value('GoogleApp', {
     apiKey: 'JYMy1-rQXJXmZb18jHW_TYjQ',
