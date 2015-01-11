@@ -1,6 +1,6 @@
 app.config(['$translateProvider', function($translateProvider) {
     $translateProvider.useStaticFilesLoader({
-        prefix: '/translations/',
+        prefix: './translations/',
         suffix: '.json'
     });
     
