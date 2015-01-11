@@ -1,6 +1,7 @@
 var app = angular.module("HomePlanner", [
     'gapi', 
-    'ngRoute', 
+    'ngRoute',
+    'pascalprecht.translate',
     'ngAnimate', 
     'ngMaterial', 
     'angular-flexslider'
@@ -40,4 +41,15 @@ app.config(['$routeProvider', function($routeProvider) {
         .otherwise({
             redirectTo: "/home"
         });
+}]);
+
+app.config(['$translateProvider', function($translateProvider) {
+    $translateProvider.useStaticFilesLoader({
+        prefix: '/translations/',
+        suffix: '.json'
+    });
+    
+    // $translateProvider.useLocalStorage();
+    
+    $translateProvider.preferredLanguage('de');
 }]);
