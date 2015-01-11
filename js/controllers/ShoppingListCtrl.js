@@ -1,4 +1,4 @@
-app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$mdBottomSheet', '$mdToast', function($scope, HomeManagerApi, $mdDialog, $mdBottomSheet, $mdToast) {
+app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$mdBottomSheet', '$mdToast', '$filter', function($scope, HomeManagerApi, $mdDialog, $mdBottomSheet, $mdToast, $filter) {
     $scope.loadItems = function () {
         HomeManagerApi.shoppinglist.getAllItems().success(function(data){
             $scope.items = data;
@@ -11,8 +11,8 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
         HomeManagerApi.shoppinglist.deleteItem($scope.items[index]._id).success(function(data){
             console.log("deleted");
             var toast = $mdToast.simple()
-                .content("Item removed")
-                .action("Revert");
+                .content($filter('translate')('ITEM REMOVED'))
+                .action($filter('translate')('UNDO'));
                 
            $mdToast.show(toast).then(function(){
                addItem($scope.previousDeleted);
@@ -61,7 +61,7 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
             templateUrl: 'templates/bottom-sheet-shoppinglist.html',
             controller: 'BottomSheetShoppinglistCtrl'
         }).then(function(data) {
-            switch (data.name) {
+            switch (data) {
                 case 'mail':
                     $scope.sendMail();
                     break;

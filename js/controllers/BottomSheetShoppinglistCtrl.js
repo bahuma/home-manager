@@ -1,10 +1,14 @@
-app.controller('BottomSheetShoppinglistCtrl', ['$scope', '$mdBottomSheet', function($scope, $mdBottomSheet) {
+app.controller('BottomSheetShoppinglistCtrl', ['$scope', '$mdBottomSheet', '$filter', function($scope, $mdBottomSheet, $filter) {
     $scope.items = [
-        { name: 'mail', icon: 'img/mail.svg' }
+        {
+            id: 'mail',
+            name: $filter('translate')('MAIL'),
+            icon: 'img/mail.svg'
+        }
     ];
     
     $scope.listItemClick = function($index) {
         var clickedItem = $scope.items[$index];
-        $mdBottomSheet.hide(clickedItem);
+        $mdBottomSheet.hide(clickedItem.id);
     };
 }]);

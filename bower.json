@@ -21,7 +21,6 @@
     "angular-material": "~0.6.1",
     "angular-route": "~1.3.0",
     "angular-resource": "~1.3.0",
-    "ngGAPI": "https://github.com/christiansmith/ngGAPI.git",
     "angular-flexslider": "~1.3.0",
     "angular-translate": "~2.5.2",
     "angular-translate-loader-static-files": "~2.5.2"

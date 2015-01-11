@@ -1,4 +1,5 @@
 {
+    "APP.TITLE": "Home-Manager",
     "SHOPPINGLIST": "Einkaufszettel",
     "SETTINGS": "Einstellungen",
     "ADD": "Hinzufügen",
@@ -12,5 +13,8 @@
     "WHAT WOULD YOU LIKE TO ADD": "Was möchten Sie hinzufügen",
     "E-MAIL": "E-Mail",
     "HOME": "Startseite",
-    "TASKS": "Dienste"
+    "TASKS": "Dienste",
+    "MAIL": "Mail",
+    "ITEM REMOVED": "Artikel entfernt",
+    "UNDO": "Rückgängig"
 }

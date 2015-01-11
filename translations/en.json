@@ -1,4 +1,5 @@
 {
+    "APP.TITLE": "Home-Manager",
     "SHOPPINGLIST": "Shoppinglist",
     "SETTINGS": "Settings",
     "ADD": "Add",
@@ -12,5 +13,8 @@
     "WHAT WOULD YOU LIKE TO ADD": "What would you like to add",
     "E-MAIL": "E-Mail",
     "HOME": "Home",
-    "TASKS": "Tasks"
+    "TASKS": "Tasks",
+    "MAIL": "Mail",
+    "ITEM REMOVED": "Item removed",
+    "UNDO": "Undo"
 }
