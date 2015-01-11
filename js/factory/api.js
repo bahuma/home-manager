@@ -25,9 +25,12 @@ app.factory('HomeManagerApi', ['$http', function($http) {
         }
     };
     
-    HomeManagerApi.home = {
-        getImages : function() {
-            return $http.get(urlBase + '/home/images');
+    HomeManagerApi.common = {
+        getHomeImage : function() {
+            return $http.get(urlBase + '/common/home-image');
+        },
+        getHomeMessage : function() {
+            return $http.get(urlBase + '/common/home-message')
         }
     }
     

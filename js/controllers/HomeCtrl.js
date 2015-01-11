@@ -1,7 +1,10 @@
 app.controller("HomeCtrl", ['$scope', 'HomeManagerApi', function($scope, HomeManagerApi) {
-    $scope.images = [];
     
-    HomeManagerApi.home.getImages().success(function(data) {
-        $scope.images = data;
+    HomeManagerApi.common.getHomeImage().success(function(data) {
+        $scope.image = data[0].value;
+    });
+    
+    HomeManagerApi.common.getHomeMessage().success(function(data) {
+        $scope.message = data[0].value;
     });
 }]);
