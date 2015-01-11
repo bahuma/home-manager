@@ -6,8 +6,18 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
     }
     
     $scope.removeItem = function (index) {
+        $scope.previousDeleted = $scope.items[index].name;
         
-        HomeManagerApi.shoppinglist.deleteItem($scope.items[index]._id)
+        HomeManagerApi.shoppinglist.deleteItem($scope.items[index]._id).success(function(data){
+            console.log("deleted");
+            var toast = $mdToast.simple()
+                .content("Item removed")
+                .action("Revert");
+                
+           $mdToast.show(toast).then(function(){
+               addItem($scope.previousDeleted);
+           });
+        });
         
         $scope.items.splice(index, 1);
     }
@@ -26,7 +36,6 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
                     else
                     {
                         $mdToast.show($mdToast.simple().content(data.message));
-                        console.log(data.error)
                     }
                 });
             }
@@ -41,9 +50,7 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
         })
         .then(function(itemName) {
             if (itemName) {
-                HomeManagerApi.shoppinglist.createItem(itemName).success(function(data) {
-                    $scope.items.push(data.createdObject);    
-                });
+                addItem(itemName);
             }
         });
     }
@@ -59,6 +66,12 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
                     $scope.sendMail();
                     break;
             }
+        });
+    }
+    
+    var addItem = function(itemName) {
+        HomeManagerApi.shoppinglist.createItem(itemName).success(function(data) {
+            $scope.items.push(data.createdObject);    
         });
     }
     
