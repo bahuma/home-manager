@@ -31,7 +31,7 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
             if (email) {
                 HomeManagerApi.shoppinglist.mail(email).success(function(data) {
                     if (data.sent) {
-                        $mdToast.show($mdToast.simple().content(data.message));
+                        $mdToast.show($mdToast.simple().content($filter('translate')('MAIL SENT')));
                     }
                     else
                     {
