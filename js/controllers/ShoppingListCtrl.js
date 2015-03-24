@@ -2,6 +2,7 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
     $scope.items  = [];
     
     $scope.loadItems = function () {
+        $scope.items = [];
         HomeManagerApi.shoppinglist.getAllItems().success(function(data){
             data.forEach(function(currentValue, index, array){
                 $scope.items.push(convertItem(data[index]));    
