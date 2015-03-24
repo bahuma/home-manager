@@ -17,6 +17,6 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: "SettingsCtrl"
         })
         .otherwise({
-            redirectTo: "/home"
+            redirectTo: "/shoppinglist"
         });
 }]);
