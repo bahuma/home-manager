@@ -33,15 +33,32 @@ span.highlight {
 
 
 
-.reveal-animation.ng-enter,
-.reveal-animation.ng-leave {
- -webkit-transition: 1s linear opacity;
- transition: 1s linear opacity;
-
- opacity: 0;
+.reveal-animation {
+	-webkit-transition: 1s linear all;
+ 	transition: 1s linear all;
+	overflow: hidden;
 }
 
-.reveal-animation.ng-enter.ng-enter-active,
+.reveal-animation.ng-enter{
+ 	max-height: 0;
+ 	margin: 0 15px;
+ 	opacity: 0;
+}
+
+.reveal-animation.ng-enter.ng-enter-active {
+	max-height: 50px;
+	margin: 15px;
+	opacity: 1;
+}
+
+.reveal-animation.ng-leave {
+ 	max-height: 50px;
+ 	margin: 15px;
+ 	opacity: 1;
+}
+
 .reveal-animation.ng-leave.ng-leave-active {
- opacity: 1;
+	max-height: 0;
+	margin: 0 15px;
+	opacity: 0;
 }
