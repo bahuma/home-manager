@@ -4,6 +4,7 @@ AddEncoding gzip svgz
 <IfModule mod_rewrite.c>
     # Force SSL
     RewriteEngine On 
+    RewriteCond %{HTTP_HOST} ^apps\.bahuma\.me [NC]
     RewriteCond %{SERVER_PORT} 80 
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R,QSA]
+    RewriteRule ^(.*)$ https://apps.bahuma.me/$1 [R,L,QSA]
 </IfModule>
