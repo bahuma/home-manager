@@ -1,6 +1,7 @@
-app.controller('DialogShoppinglistAddCtrl', ['$scope', '$mdDialog', 'HomeManagerApi', function($scope, $mdDialog, HomeManagerApi) {
+app.controller('DialogShoppinglistAddCtrl', ['$scope', '$mdDialog', 'HomeManagerApi', '$q', '$http', function($scope, $mdDialog, HomeManagerApi, $q, $http) {
     $scope.itemName = "";
-    $scope.autocompleteItems = [];
+    $scope.selectedItem = "";
+    $scope.searchText = "";
     
     $scope.saveItem = function() {
         if ($scope.itemName !== "")
@@ -9,17 +10,13 @@ app.controller('DialogShoppinglistAddCtrl', ['$scope', '$mdDialog', 'HomeManager
     $scope.closeDialog = function() {
         $mdDialog.hide(false);
     }
-    $scope.autocomplete = function() {
-        if ($scope.itemName != "") {
-            HomeManagerApi.shoppinglist.search($scope.itemName).success(function(data) {
-               $scope.autocompleteItems = data; 
-            });
-        } else {
-            $scope.autocompleteItems = "";
-        }
-    }
-    $scope.setItemName = function(val) {
-        $scope.itemName = val;
-        $scope.autocompleteItems = [];
+    $scope.querySearch = function(searchText) {
+        var deferred = $q.defer();
+        
+        HomeManagerApi.shoppinglist.search(searchText).success(function(data) {
+            deferred.resolve(data)
+        });
+        
+        return deferred.promise;
     }
 }]);

@@ -16,15 +16,19 @@ md-icon.pinned {
 	margin: 0 0 0 5px;
 }
 
-#autocomplete md-item {
-	display: block;
-	cursor: pointer;
-}
-
 #home-slider .flexslider {
 	border: 0;
 	border-radius: 0;
 	box-shadow: 0;
+}
+
+md-dialog.dialog-shoppinglist-add,
+md-dialog.dialog-shoppinglist-add > md-content {
+	overflow: visible;
+}
+
+span.highlight {
+	color: red !important;
 }
 
 
