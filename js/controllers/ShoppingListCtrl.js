@@ -1,14 +1,19 @@
 app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$mdBottomSheet', '$mdToast', '$filter', function($scope, HomeManagerApi, $mdDialog, $mdBottomSheet, $mdToast, $filter) {
+    $scope.items  = [];
+    
     $scope.loadItems = function () {
         HomeManagerApi.shoppinglist.getAllItems().success(function(data){
-            $scope.items = data;
+            data.forEach(function(currentValue, index, array){
+                $scope.items.push(convertItem(data[index]));    
+            })
+            console.log($scope.items);
         }); 
     }
     
-    $scope.removeItem = function (index) {
+    $scope.removeItem = function (index, id) {
         $scope.previousDeleted = $scope.items[index].name;
         
-        HomeManagerApi.shoppinglist.deleteItem($scope.items[index]._id).success(function(data){
+        HomeManagerApi.shoppinglist.deleteItem(id).success(function(data){
             console.log("deleted");
             var toast = $mdToast.simple()
                 .content($filter('translate')('ITEM REMOVED'))
@@ -19,7 +24,7 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
            });
         });
         
-        $scope.items.splice(index, 1);
+        // $scope.items.splice(index, 1);
     }
     
     $scope.sendMail = function() {
@@ -71,8 +76,13 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
     
     var addItem = function(itemName) {
         HomeManagerApi.shoppinglist.createItem(itemName).success(function(data) {
-            $scope.items.push(data.createdObject);    
+            $scope.items.push(convertItem(data.createdObject));    
         });
+    }
+    
+    var convertItem = function(item) {
+        item.checked = false;
+        return item;
     }
     
     

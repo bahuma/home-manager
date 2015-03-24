@@ -15,7 +15,9 @@
 </md-toolbar>
 
 <md-content class="md-padding" layout="column" flex>
-	<md-checkbox ng-repeat="(index, item) in items" aria-label="{{item.name}}" ng-click="removeItem(index)">{{item.name}}</md-checkbox>
+	<md-checkbox ng-repeat="(index, item) in items | filter:{checked:false} | orderBy:'name'" aria-label="{{item.name}}" ng-model="item.checked" ng-click="removeItem(index, item._id)">
+		{{item.name}}
+	</md-checkbox>
 	
 	<md-button class="md-fab md-primary md-fab-bottom-right" ng-click="showAddDialog($event)" aria-label="{{ 'ADD' | translate }}" md-theme="deep-orange">
 		<md-icon icon="img/add.svg" style="width: 24px; height: 24px;"></md-icon>
