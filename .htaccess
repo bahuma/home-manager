@@ -3,7 +3,7 @@ AddEncoding gzip svgz
 
 <IfModule mod_rewrite.c>
     # Force SSL
-    RewriteEngine on
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R,QSA]
+    RewriteEngine On 
+    RewriteCond %{SERVER_PORT} 80 
+    RewriteRule ^(.*)$ https://www.example.com/$1 [R,L]
 </IfModule>
