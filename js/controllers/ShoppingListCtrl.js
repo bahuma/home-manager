@@ -5,16 +5,16 @@ app.controller('ShoppingListCtrl', ['$scope', 'HomeManagerApi', '$mdDialog', '$m
         HomeManagerApi.shoppinglist.getAllItems().success(function(data){
             data.forEach(function(currentValue, index, array){
                 $scope.items.push(convertItem(data[index]));    
-            })
-            console.log($scope.items);
+            });
         }); 
     }
     
     $scope.removeItem = function (index, id) {
-        $scope.previousDeleted = $scope.items[index].name;
         
         HomeManagerApi.shoppinglist.deleteItem(id).success(function(data){
-            console.log("deleted");
+            
+            $scope.previousDeleted = data.deletedItem.name;
+            
             var toast = $mdToast.simple()
                 .content($filter('translate')('ITEM REMOVED'))
                 .action($filter('translate')('UNDO'));

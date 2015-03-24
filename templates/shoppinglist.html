@@ -15,7 +15,7 @@
 </md-toolbar>
 
 <md-content class="md-padding" layout="column" flex>
-	<md-checkbox ng-repeat="(index, item) in items | filter:{checked:false} | orderBy:'name'" aria-label="{{item.name}}" ng-model="item.checked" ng-click="removeItem(index, item._id)">
+	<md-checkbox ng-repeat="(index, item) in items | filter:{checked:false} | orderBy:'name'" class="reveal-animation" aria-label="{{item.name}}" ng-model="item.checked" ng-click="removeItem(index, item._id)">
 		{{item.name}}
 	</md-checkbox>
 	
