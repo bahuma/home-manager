@@ -28,38 +28,19 @@ md-icon.pinned {
 }
 
 
-.reveal-animation.ng-enter {
- -webkit-transition: 1s linear all; /* Safari/Chrome */
- transition: 1s linear all; /* All other modern browsers and IE10+ */
 
- /* The animation preparation code */
- opacity: 0;
-}
-
-/*
- Keep in mind that you want to combine both CSS
- classes together to avoid any CSS-specificity
- conflicts
-*/
-.reveal-animation.ng-enter.ng-enter-active {
- /* The animation code itself */
- opacity: 1;
-}
-
+.reveal-animation.ng-enter,
 .reveal-animation.ng-leave {
- -webkit-transition: 1s linear all; /* Safari/Chrome */
- transition: 1s linear all; /* All other modern browsers and IE10+ */
+ -webkit-transition: 1s linear max-height;
+ transition: 1s linear max-height;
 
- /* The animation preparation code */
- opacity: 1;
+ /*opacity: 0;*/
+ overflow: hidden;
+ max-height: 0 !important;
 }
 
-/*
- Keep in mind that you want to combine both CSS
- classes together to avoid any CSS-specificity
- conflicts
-*/
+.reveal-animation.ng-enter.ng-enter-active,
 .reveal-animation.ng-leave.ng-leave-active {
- /* The animation code itself */
- opacity: 0;
+ /*opacity: 1;*/
+ max-height: 9999px !important;
 }
