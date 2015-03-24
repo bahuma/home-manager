@@ -42,5 +42,5 @@ md-icon.pinned {
 .reveal-animation.ng-enter.ng-enter-active,
 .reveal-animation.ng-leave.ng-leave-active {
  /*opacity: 1;*/
- max-height: 9999px !important;
+ max-height: 120px !important;
 }
