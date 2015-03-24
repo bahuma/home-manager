@@ -34,13 +34,10 @@ md-icon.pinned {
  -webkit-transition: 1s linear max-height;
  transition: 1s linear max-height;
 
- /*opacity: 0;*/
- overflow: hidden;
- max-height: 0 !important;
+ opacity: 0;
 }
 
 .reveal-animation.ng-enter.ng-enter-active,
 .reveal-animation.ng-leave.ng-leave-active {
- /*opacity: 1;*/
- max-height: 120px !important;
+ opacity: 1;
 }
