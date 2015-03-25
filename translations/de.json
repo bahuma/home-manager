@@ -17,5 +17,6 @@
     "MAIL": "Mail",
     "ITEM REMOVED": "Artikel entfernt",
     "UNDO": "Rückgängig",
-    "MAIL SENT": "Mail versendet"
+    "MAIL SENT": "Mail versendet",
+    "DEVELOPER MODE": "Entwicklermodus"
 }

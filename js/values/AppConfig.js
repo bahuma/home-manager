@@ -1,3 +1,4 @@
 app.value('AppConfig', {
-    onScreenKeyboard: false
+    onScreenKeyboard: false,
+    devMode: false
 });
