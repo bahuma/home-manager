@@ -18,5 +18,6 @@
     "ITEM REMOVED": "Item removed",
     "UNDO": "Undo",
     "MAIL SENT": "Mail sent",
-    "DEVELOPER MODE": "Developer Mode"
+    "DEVELOPER MODE": "Developer Mode",
+    "MAIL-EXPORT-INFO": "Insert the email address where you want to send the shoppinglist to."
 }

@@ -18,5 +18,6 @@
     "ITEM REMOVED": "Artikel entfernt",
     "UNDO": "Rückgängig",
     "MAIL SENT": "Mail versendet",
-    "DEVELOPER MODE": "Entwicklermodus"
+    "DEVELOPER MODE": "Entwicklermodus",
+    "MAIL-EXPORT-INFO": "Geben Sie die E-Mail Adresse an, an die Sie den Einkaufszettel senden wollen."
 }
