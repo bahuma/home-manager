@@ -1,11 +1,10 @@
 app.controller('DialogShoppinglistAddCtrl', ['$scope', '$mdDialog', 'HomeManagerApi', '$q', '$http', function($scope, $mdDialog, HomeManagerApi, $q, $http) {
-    $scope.itemName = "";
     $scope.selectedItem = "";
     $scope.searchText = "";
     
     $scope.saveItem = function() {
-        if ($scope.itemName !== "")
-            $mdDialog.hide($scope.itemName);
+        if ($scope.searchText !== "")
+            $mdDialog.hide($scope.searchText);
     };
     $scope.closeDialog = function() {
         $mdDialog.hide(false);
