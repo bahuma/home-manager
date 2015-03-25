@@ -6,9 +6,11 @@
 		<h1 class="md-toolbar-tools">{{ 'SHOPPINGLIST' | translate }}</h1>
 		<span class="flex"></span>
 		<md-button class="menu-icon" ng-click="loadItems()" aria-label="{{ 'REFRESH' | translate }}">
+			<md-tooltip>{{ 'REFRESH' | translate }}</md-tooltip>
 			<md-icon md-svg-src="./img/refresh.svg"></md-icon>
 		</md-button>
 		<md-button class="menu-icon" ng-click="showBottomSheet($event)" aria-label="{{ 'OPTIONS' | translate }}">
+			<md-tooltip>{{ 'OPTIONS' | translate }}</md-tooltip>
 			<md-icon md-svg-src="./img/show.svg"></md-icon>
 		</md-button>
 	</div>
@@ -20,6 +22,7 @@
 	</md-checkbox>
 	
 	<md-button class="md-fab md-primary md-fab-bottom-right" ng-click="showAddDialog($event)" aria-label="{{ 'ADD' | translate }}" md-theme="deep-orange">
+		<md-tooltip>{{ 'ADD' | translate }}</md-tooltip>
 		<md-icon md-svg-src="./img/add.svg"></md-icon>
 	</md-button>
 </md-content>
