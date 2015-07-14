@@ -5,7 +5,7 @@
 		</md-button>
 		<h1 class="md-toolbar-tools">{{ 'SHOPPINGLIST' | translate }}</h1>
 		<span class="flex"></span>
-		<md-button class="menu-icon" ng-click="loadItems()" aria-label="{{ 'REFRESH' | translate }}">
+		<md-button class="menu-icon" ng-click="loadItems(true)" aria-label="{{ 'REFRESH' | translate }}">
 			<md-tooltip>{{ 'REFRESH' | translate }}</md-tooltip>
 			<md-icon md-svg-src="./img/refresh.svg"></md-icon>
 		</md-button>
@@ -17,6 +17,14 @@
 </md-toolbar>
 
 <md-content class="md-padding" layout="column" flex>
+	<div layout="row" layout-sm="column" layout-align="space-around" ng-show="loading">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    
+    <div ng-show="noItems() && !loading">
+    	{{ 'NO ITEMS' | translate }}
+    </div>
+	
 	<md-checkbox ng-repeat="(index, item) in items | filter:{checked:false} | orderBy:'name'" class="reveal-animation" aria-label="{{item.name}}" ng-model="item.checked" ng-click="removeItem(index, item._id)">
 		{{item.name}}
 	</md-checkbox>

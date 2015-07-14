@@ -19,5 +19,7 @@
     "UNDO": "Undo",
     "MAIL SENT": "Mail sent",
     "DEVELOPER MODE": "Developer Mode",
-    "MAIL-EXPORT-INFO": "Insert the email address where you want to send the shoppinglist to."
+    "MAIL-EXPORT-INFO": "Insert the email address where you want to send the shoppinglist to.",
+    "NO ITEMS": "There are no items.",
+    "LIST REFRESHED": "List refreshed"
 }
