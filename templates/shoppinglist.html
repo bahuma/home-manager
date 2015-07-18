@@ -1,17 +1,19 @@
 <md-toolbar class="app-toolbar" md-theme="deep-orange">
 	<div class="md-toolbar-tools">
-		<md-button class="menu-icon" ng-click="$parent.toggleSidebar()" aria-label="{{ 'OPEN SIDEBAR' | translate }}">
-			<md-icon md-svg-src="./img/menu.svg" alt="android "></md-icon>
+		<md-button class="md-icon-button" ng-click="$parent.toggleSidebar()" aria-label="{{ 'OPEN SIDEBAR' | translate }}">
+			<md-icon>menu</md-icon>
 		</md-button>
-		<h1 class="md-toolbar-tools">{{ 'SHOPPINGLIST' | translate }}</h1>
-		<span class="flex"></span>
-		<md-button class="menu-icon" ng-click="loadItems(true)" aria-label="{{ 'REFRESH' | translate }}">
+		<h2>
+			<span>{{ 'SHOPPINGLIST' | translate }}</span>
+		</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="loadItems(true)" aria-label="{{ 'REFRESH' | translate }}">
 			<md-tooltip>{{ 'REFRESH' | translate }}</md-tooltip>
-			<md-icon md-svg-src="./img/refresh.svg"></md-icon>
+			<md-icon>refresh</md-icon>
 		</md-button>
-		<md-button class="menu-icon" ng-click="showBottomSheet($event)" aria-label="{{ 'OPTIONS' | translate }}">
+		<md-button class="md-icon-button" ng-click="showBottomSheet($event)" aria-label="{{ 'OPTIONS' | translate }}">
 			<md-tooltip>{{ 'OPTIONS' | translate }}</md-tooltip>
-			<md-icon md-svg-src="./img/show.svg"></md-icon>
+			<md-icon>more_vert</md-icon>
 		</md-button>
 	</div>
 </md-toolbar>
@@ -31,6 +33,6 @@
 	
 	<md-button class="md-fab md-primary md-fab-bottom-right" ng-click="showAddDialog($event)" aria-label="{{ 'ADD' | translate }}" md-theme="deep-orange">
 		<md-tooltip>{{ 'ADD' | translate }}</md-tooltip>
-		<md-icon md-svg-src="./img/add.svg"></md-icon>
+		<md-icon>add</md-icon>
 	</md-button>
 </md-content>

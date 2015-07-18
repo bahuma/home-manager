@@ -1,9 +1,13 @@
-#menu .md-button {
+md-sidenav  #menu{
+	padding: 0;
+}
+
+md-sidenav #menu .md-button {
 	display: block;
 	text-align: left;
 	border-radius: 0;
-	padding: 10px;
 	padding: 16px;
+	margin: 0;
 	color: rgba(0, 0, 0, 0.73)
 }
 
@@ -39,27 +43,30 @@ span.highlight {
 }
 
 .reveal-animation.ng-enter{
- 	max-height: 0;
- 	margin: 0 15px;
+ 	height: 0;
+ 	/*margin: 0 15px;*/
  	opacity: 0;
  	overflow: hidden;
 }
 
 .reveal-animation.ng-enter.ng-enter-active {
-	max-height: 50px;
-	margin: 15px;
+	/*max-height: 50px;*/
+	/*margin: 15px;*/
+	height: 27px;
 	opacity: 1;
 }
 
 .reveal-animation.ng-leave {
- 	max-height: 50px;
- 	margin: 15px;
+ 	/*max-height: 50px;*/
+ 	/*margin: 15px;*/
+ 	height: 27px;
  	opacity: 1;
  	overflow: hidden;
 }
 
 .reveal-animation.ng-leave.ng-leave-active {
-	max-height: 0;
-	margin: 0 15px;
+	/*max-height: 0;*/
+	/*margin: 0 15px;*/
+	height: 0;
 	opacity: 0;
 }

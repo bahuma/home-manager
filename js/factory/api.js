@@ -38,6 +38,12 @@ app.factory('HomeManagerApi', ['$http', 'AppConfig', function($http, AppConfig) 
         getHomeMessage : function() {
             return $http.get(urlBase + '/common/home-message' + dev);
         }
+    };
+    
+    HomeManagerApi.user = {
+      getAllUsers : function() {
+          return $http.get(urlBase + '/user' + dev);
+      }  
     }
     
     return HomeManagerApi;

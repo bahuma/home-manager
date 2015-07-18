@@ -3,7 +3,7 @@ app.controller('BottomSheetShoppinglistCtrl', ['$scope', '$mdBottomSheet', '$fil
         {
             id: 'mail',
             name: $filter('translate')('MAIL'),
-            icon: './img/mail.svg'
+            icon: 'mail'
         }
     ];
     

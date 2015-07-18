@@ -8,10 +8,10 @@ app.controller('SidebarCtrl', ['$scope', '$mdSidenav', '$location', function($sc
 			href: "shoppinglist",
 			name: "Shopping List"
 		},
-		{
-			href: "tasks",
-			name: "Tasks"
-		},
+		// {
+		// 	href: "tasks",
+		// 	name: "Tasks"
+		// },
 		{
 			href: "settings",
 			name: "Settings"

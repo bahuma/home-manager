@@ -1,12 +1,14 @@
 <md-toolbar class="app-toolbar" md-theme="green">
 	<div class="md-toolbar-tools">
-		<md-button class="menu-icon" ng-click="$parent.toggleSidebar()" aria-label="{{ 'OPEN SIDEBAR' | translate }}">
-			<md-icon md-svg-src="./img/menu.svg" alt="android "></md-icon>
+		<md-button class="md-icon-button" ng-click="$parent.toggleSidebar()" aria-label="{{ 'OPEN SIDEBAR' | translate }}">
+			<md-icon>menu</md-icon>
 		</md-button>
-		<h1 class="md-toolbar-tools">{{ 'TASKS' | translate }}</h1>
-		<span class="flex"></span>
-		<md-button class="menu-icon" ng-click="weekChange()" aria-label="{{ 'REFRESH' | translate }}">
-			<md-icon md-svg-src="./img/refresh.svg"></md-icon>
+		<h2>
+			<span>{{ 'TASKS' | translate }}</span>
+		</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="weekChange()" aria-label="{{ 'REFRESH' | translate }}">
+			<md-icon>refresh</md-icon>
 		</md-button>
 	</div>
 </md-toolbar>
@@ -19,7 +21,7 @@
 			<h1>{{user.name}}</h1>
 			<ul>
 				<li ng-repeat="fixedTask in user.fixedTasks">
-					{{fixedTask}}<md-icon md-svg-src="./img/pin.svg" style="width:7px;height:12px" class="pinned"></md-icon>
+					{{fixedTask}}<md-icon class="pinned">pin</md-icon>
 				</li>
 			</ul>
 			

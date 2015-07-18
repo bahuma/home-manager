@@ -21,5 +21,6 @@
     "DEVELOPER MODE": "Entwicklermodus",
     "MAIL-EXPORT-INFO": "Geben Sie die E-Mail Adresse an, an die Sie den Einkaufszettel senden wollen.",
     "NO ITEMS": "Es sind keine Einträge vorhanden.",
-    "LIST REFRESHED": "Einträge aktualisiert"
+    "LIST REFRESHED": "Einträge aktualisiert",
+    "LOGIN": "Anmelden"
 }
