@@ -1,27 +1,16 @@
 {
-  "name": "HomePlanner",
-  "version": "0.0.0",
-  "homepage": "https://github.com/bahuma/home-planner",
-  "authors": [
-    "Maximilian Bachhuber <bahuma20@bahuma.me>"
-  ],
-  "description": "A system to manager your home using AngularJS and Material Design",
-  "main": "src/index.html",
-  "license": "MIT",
+  "name": "polymer-starter-kit",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
-    "angular": "~1.3.0",
-    "angular-material": "~0.10.0",
-    "angular-route": "~1.3.0",
-    "angular-resource": "~1.3.0",
-    "angular-translate": "~2.5.2",
-    "angular-translate-loader-static-files": "~2.5.2"
+    "firebase-element": "GoogleWebComponents/firebase-element#~1.0.6",
+    "iron-elements": "PolymerElements/iron-elements#1.0.0",
+    "neon-elements": "PolymerElements/neon-elements#1.0.0",
+    "page": "visionmedia/page.js#~1.6.3",
+    "paper-elements": "PolymerElements/paper-elements#1.0.1",
+    "platinum-elements": "PolymerElements/platinum-elements#1.0.1"
+  },
+  "devDependencies": {
+    "web-component-tester": "*",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0"
   }
 }

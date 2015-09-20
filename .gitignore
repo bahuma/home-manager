@@ -1,4 +1,4 @@
-bower_components
 node_modules
-.c9
-npm-debug.log
+dist
+bower_components
+.tmp
