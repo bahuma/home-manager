@@ -1,4 +1,4 @@
-## Home Manager
+# Home Manager
 
 The Home Manager is a tool for managing daily tasks and lists you need.
 
@@ -7,11 +7,11 @@ For example a shopping list.
 
 This version is based on [Polymer](http://github.com/Polymer/polymer) and [Firebase](http://firebaseio.com)
 
-# Installation
+## Installation
 
-Clone the repository and point your web root to the dist folder
+Clone the repository and point your web root to the dist folder.
 
-# Development
+## Development
 
 Clone the repository
 
