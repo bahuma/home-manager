@@ -1,0 +1,82 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
+<!-- <link rel="import" href="../../bower_components/paper-styles/paper-styles-classes.html"> -->
+<link rel="import" href="../../bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../bahuma-tagging-input/bahuma-tagging-input.html">
+
+
+<dom-module id="bahuma-menu-list-add-form">
+  <style>
+    :host {
+      display: block;
+    }
+    paper-button {
+      margin-top: 10px;
+      background: var(--accent-color);
+      color: #FFF;
+    }
+  </style>
+
+  <template>
+    <firebase-collection
+      location="[[firebaseurl]]"
+      data="{{listItems}}"
+      limit-to="0"></firebase-collection>
+
+    <paper-input value="{{_newItem.name}}" label="Name des Restaurants" required auto-validate error-message="Erforderlich!"></paper-input>
+    <paper-input value="{{_newItem.city}}" label="Ort" required auto-validate error-message="Erforderlich!"></paper-input>
+    <bahuma-tagging-input items={{_newItem.types}} label="Art des Restaurants (Griechisch, Italienisch, ...):" add-label="Art hinzufuegen"></bahuma-tagging-input>
+    <bahuma-tagging-input items="{{_newItem.meals}}"label="Welche Speisen werden hier verkauft:" add-label="Gericht hinzufuegen"></bahuma-tagging-input>
+    <paper-textarea value="{{_newItem.office_hours}}" label="Besonderheiten zu Oeffnungszeiten"></paper-textarea>
+    <paper-input value="{{_newItem.url}}" label="URL zur Speissekarte" required auto-validate error-message="Erforderlich!"></paper-input>
+    <paper-button raised on-tap="_save">Speissekarte hinzufuegen</paper-button>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bahuma-menu-list-add-form',
+      properties: {
+        listItems: {
+          notify: true
+        },
+        firebaseurl: {
+          type: String,
+          notify: true
+        },
+        _newItem: {
+          type: Object,
+          notify: true,
+          value: {
+            name: "",
+            city: "",
+            types: [],
+            meals: [],
+            office_hours: "",
+            url: ""
+          }
+        }
+      },
+      _save: function() {
+        this.push('listItems', this._newItem);
+
+        this._newItem = {
+          name: "",
+          city: "",
+          types: [],
+          meals: [],
+          office_hours: "",
+          url: ""
+        };
+
+        document.querySelector('app-router').go('/menu-list');
+      }
+    });
+  </script>
+</dom-module>

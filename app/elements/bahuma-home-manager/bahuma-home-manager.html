@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="bahuma-home-manager">
+  <style is="custom-style">
+    paper-tabs, paper-toolbar {
+      background-color: var(--dark-primary-color);
+      color: #fff;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    }
+    paper-toolbar paper-tabs {
+      box-shadow: none;
+    }
+    paper-tabs[noink][no-bar] paper-tab.iron-selected {
+      color: #ffff8d;
+    }
+    paper-tabs[align-bottom] {
+      box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.15);
+    }
+    paper-tabs a {
+      color: #fff;
+    }
+
+    iron-pages {
+      padding: 20px;
+    }
+  </style>
+
+  <template>
+    <paper-tabs selected="{{activeTab}}">
+      <paper-tab>Einkaufszettel</paper-tab>
+      <paper-tab>Speisekarten</paper-tab>
+      <!--<paper-tab>Tab 3</paper-tab>-->
+    </paper-tabs>
+
+    <iron-pages selected="{{activeTab}}">
+      <div><bahuma-shoppinglist firebaseurl="https://home-manager.firebaseio.com/shoppinglist"></bahuma-shoppinglist></div>
+      <div><bahuma-menu-list firebaseurl="https://home-manager.firebaseio.com/menu-list"></bahuma-menu-list></div>
+      <!--<div><bahuma-menu-list-add-form firebaseurl="https://home-manager.firebaseio.com/menu-list"></bahuma-menu-list-add-form></div>-->
+    </iron-pages>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bahuma-home-manager',
+      properties: {
+        activeTab: {
+          type: Number,
+          value: 0
+        }
+      }
+    });
+  </script>
+</dom-module>
