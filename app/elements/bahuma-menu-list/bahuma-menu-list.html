@@ -47,7 +47,7 @@
       <template is="dom-repeat" items="{{listItems}}" as="item">
         <paper-card heading="{{item.name}}">
           <div class="card-content">
-            <bahuma-raw content="{{item.office_hours}}" replacements="newline"></bahuma-raw>
+            <bahuma-raw content="{{item.officeHours}}" replacements="newline"></bahuma-raw>
           </div>
 
           <div class="card-actions">
@@ -76,7 +76,7 @@
         document.querySelector('app-router').go('/menu-list/add');
       },
       _openUrl: function(e) {
-        var url = e.target.getAttribute('data-url')
+        var url = e.target.getAttribute('data-url');
         window.open(url, '_blank');
       }
     });

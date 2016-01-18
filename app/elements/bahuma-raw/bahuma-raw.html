@@ -17,15 +17,15 @@
         content: {
           notify: true,
           type: String,
-          value: "",
-          observer: "_content_changed"
+          value: '',
+          observer: '_contentChanged'
         }
       },
-      _content_changed: function() {
+      _contentChanged: function() {
         var content = this.content;
-        content = content.replace(/(?:\r\n|\r|\n)/g, "<br>");
+        content = content.replace(/(?:\r\n|\r|\n)/g, '<br>');
 
-        this.$.bindingPoint.innerHTML = content
+        this.$.bindingPoint.innerHTML = content;
       }
     });
   </script>

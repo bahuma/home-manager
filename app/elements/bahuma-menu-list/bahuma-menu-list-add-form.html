@@ -54,12 +54,12 @@
           type: Object,
           notify: true,
           value: {
-            name: "",
-            city: "",
+            name: '',
+            city: '',
             types: [],
             meals: [],
-            office_hours: "",
-            url: ""
+            officeHours: '',
+            url: ''
           }
         }
       },
@@ -67,12 +67,12 @@
         this.push('listItems', this._newItem);
 
         this._newItem = {
-          name: "",
-          city: "",
+          name: '',
+          city: '',
           types: [],
           meals: [],
-          office_hours: "",
-          url: ""
+          officeHours: '',
+          url: ''
         };
 
         document.querySelector('app-router').go('/menu-list');

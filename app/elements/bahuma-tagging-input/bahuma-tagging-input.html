@@ -69,7 +69,7 @@
         },
         addLabel: {
           type: String,
-          value: "Add a new Item"
+          value: 'Add a new Item'
         },
         _newItem: {
           type: String,
@@ -78,10 +78,10 @@
       },
       _keyDown: function(e) {
         var keyVal = e.which;
-        if (keyVal == 13){
-          if (this._newItem != "") {
+        if (keyVal === 13){
+          if (this._newItem !== '') {
             this.push('items', this._newItem);
-            this._newItem = "";
+            this._newItem = '';
           }
         }
       },
