@@ -182,6 +182,7 @@ gulp.task('serve', ['styles', 'elements', 'images'], function () {
   browserSync({
     notify: false,
     logPrefix: 'PSK',
+    port: 8080,
     snippetOptions: {
       rule: {
         match: '<span id="browser-sync-binding"></span>',
