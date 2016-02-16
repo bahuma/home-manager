@@ -64,28 +64,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </style>
 </head>
 
-<body unresolved class="fullbleed layout vertical">
+<body unresolved class="fullbleed">
   <span id="browser-sync-binding"></span>
   <template is="dom-bind" id="app">
 
-   
+    <bahuma-home-manager></bahuma-home-manager>
 
-    <paper-header-panel class="flex">
-      <paper-toolbar>
-        <div>Einkaufszettel</div>
-      </paper-toolbar>
-      <div class="bahuma-inner-wrapper">
 
-        <bahuma-shoppinglist firebaseurl="https://home-manager.firebaseio.com/shoppinglist">
-        </bahuma-shoppinglist>
 
-      </div>
-    </paper-header-panel>
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Uncomment next block to enable Service Worker support (1/2) -->
-    
+
     <paper-toast id="caching-complete"
                  duration="6000"
                  text="Caching abgeschlossen! Diese App funktioniert in Zukunft offline.">
@@ -99,7 +117,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                          precache-file="precache.json">
       </platinum-sw-cache>
     </platinum-sw-register>
-    
+
 
   </template>
 

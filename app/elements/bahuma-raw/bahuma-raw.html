@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="bahuma-raw">
+  <style>
+    :host {
+    }
+  </style>
+
+  <template>
+    <span id="bindingPoint"></span>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bahuma-raw',
+      properties: {
+        content: {
+          notify: true,
+          type: String,
+          value: '',
+          observer: '_contentChanged'
+        }
+      },
+      _contentChanged: function() {
+        var content = this.content;
+        content = content.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+        this.$.bindingPoint.innerHTML = content;
+      }
+    });
+  </script>
+</dom-module>
