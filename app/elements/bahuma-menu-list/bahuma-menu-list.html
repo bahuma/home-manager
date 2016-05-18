@@ -5,6 +5,8 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/communication-icons.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 <!-- <link rel="import" href="../../bower_components/paper-styles/paper-styles-classes.html"> -->
 <link rel="import" href="../../bower_components/iron-flex-layout/classes/iron-flex-layout.html">
@@ -29,6 +31,18 @@
       margin: 10px;
     }
 
+    .card-content p {
+      margin: .5em;
+    }
+
+    .card-content p:first-child {
+      margin-top: 0;
+    }
+
+    .card-content p:last-child {
+      margin-bottom: 0;
+    }
+
 
     @media screen and (max-width: 670px) {
       paper-card {
@@ -47,7 +61,18 @@
       <template is="dom-repeat" items="{{listItems}}" as="item">
         <paper-card heading="{{item.name}}">
           <div class="card-content">
-            <bahuma-raw content="{{item.officeHours}}" replacements="newline"></bahuma-raw>
+            <p>
+              {{item.city}}
+            </p>
+
+            <p>
+              <iron-icon icon="communication:phone" style="width: 15px; position: relative; top: -1px;"></iron-icon>
+              <a href="tel:{{item.phone}}">{{item.phone}}</a>
+            </p>
+
+            <p>
+              <bahuma-raw content="{{item.officeHours}}" replacements="newline"></bahuma-raw>
+            </p>
           </div>
 
           <div class="card-actions">
