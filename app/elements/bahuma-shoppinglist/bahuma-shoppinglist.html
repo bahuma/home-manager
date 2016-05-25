@@ -5,9 +5,8 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
-<!-- <link rel="import" href="../../bower_components/paper-styles/paper-styles-classes.html"> -->
 <link rel="import" href="../../bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-query.html">
 
 
 <dom-module id="bahuma-shoppinglist">
@@ -29,12 +28,12 @@
   </style>
 
 	<template>
-	  <firebase-collection
-      location="[[firebaseurl]]"
-      data="{{listItems}}"></firebase-collection>
+	  <firebase-query
+      path="shoppinglist"
+      data="{{listItems}}"></firebase-query>
 
     <div class="input-wrapper">
-      <paper-input id="newItem" 
+      <paper-input id="newItem"
                    no-label-float
                    label="Hinzufügen"
                    on-keydown="_checkAdd">
@@ -58,10 +57,6 @@
 			is: 'bahuma-shoppinglist',
 			properties: {
 				listItems: {
-          notify: true
-        },
-        firebaseurl: {
-          type: String,
           notify: true
         }
 			},

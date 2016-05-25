@@ -55,16 +55,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- endreplace-->
 
   <style is="custom-style">
-    .bahuma-inner-wrapper {
-      padding: 1em;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
+    /*.bahuma-inner-wrapper {*/
+      /*padding: 1em;*/
+      /*-webkit-box-sizing: border-box;*/
+      /*-moz-box-sizing: border-box;*/
+      /*box-sizing: border-box;*/
+    /*}*/
+    body {
+      margin: 0;
     }
   </style>
 </head>
 
-<body unresolved class="fullbleed">
+<body unresolved>
   <span id="browser-sync-binding"></span>
   <template is="dom-bind" id="app">
 
@@ -90,40 +93,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Uncomment next block to enable Service Worker support (1/2) -->
 
-    <paper-toast id="caching-complete"
-                 duration="6000"
-                 text="Caching abgeschlossen! Diese App funktioniert in Zukunft offline.">
-    </paper-toast>
+    <!--<paper-toast id="caching-complete"-->
+                 <!--duration="6000"-->
+                 <!--text="Caching abgeschlossen! Diese App funktioniert in Zukunft offline.">-->
+    <!--</paper-toast>-->
 
-    <platinum-sw-register auto-register
-                          clients-claim
-                          skip-waiting
-                          on-service-worker-installed="displayInstalledToast">
-      <platinum-sw-cache default-cache-strategy="networkFirst"
-                         precache-file="precache.json">
-      </platinum-sw-cache>
-    </platinum-sw-register>
+    <!--<platinum-sw-register auto-register-->
+                          <!--clients-claim-->
+                          <!--skip-waiting-->
+                          <!--on-service-worker-installed="displayInstalledToast">-->
+      <!--<platinum-sw-cache default-cache-strategy="networkFirst"-->
+                         <!--precache-file="precache.json">-->
+      <!--</platinum-sw-cache>-->
+    <!--</platinum-sw-register>-->
 
 
   </template>
 
   <!-- build:js scripts/app.js -->
   <script src="scripts/app.js"></script>
-  <script src="../bower_components/firebase/firebase.js"></script>
   <!-- endbuild-->
 </body>
 

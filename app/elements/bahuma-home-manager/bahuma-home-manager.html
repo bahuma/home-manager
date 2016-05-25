@@ -1,42 +1,98 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
 <dom-module id="bahuma-home-manager">
-  <style is="custom-style">
-    paper-tabs, paper-toolbar {
-      background-color: var(--dark-primary-color);
-      color: #fff;
-      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-    }
-    paper-toolbar paper-tabs {
-      box-shadow: none;
-    }
-    paper-tabs[noink][no-bar] paper-tab.iron-selected {
-      color: #ffff8d;
-    }
-    paper-tabs[align-bottom] {
-      box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.15);
-    }
-    paper-tabs a {
-      color: #fff;
-    }
-
-    iron-pages {
-      padding: 20px;
-    }
-  </style>
-
   <template>
-    <paper-tabs selected="{{activeTab}}">
-      <paper-tab>Einkaufszettel</paper-tab>
-      <paper-tab>Speisekarten</paper-tab>
-      <!--<paper-tab>Tab 3</paper-tab>-->
-    </paper-tabs>
+    <style is="custom-style">
+      app-toolbar {
+        background-color: var(--primary-color);
+        color: #fff;
+      }
 
-    <iron-pages selected="{{activeTab}}">
-      <div><bahuma-shoppinglist firebaseurl="https://home-manager.firebaseio.com/shoppinglist"></bahuma-shoppinglist></div>
-      <div><bahuma-menu-list firebaseurl="https://home-manager.firebaseio.com/menu-list"></bahuma-menu-list></div>
-      <!--<div><bahuma-menu-list-add-form firebaseurl="https://home-manager.firebaseio.com/menu-list"></bahuma-menu-list-add-form></div>-->
-    </iron-pages>
+      app-toolbar paper-icon-button {
+        --paper-icon-button-ink-color: rgba(255,255,255,0.5);
+      }
+
+      app-toolbar paper-icon-button + [title] {
+        margin-left: 24px;
+      }
+
+      paper-button {
+        background-color: var(--primary-color);
+        color: white !important;
+      }
+
+      iron-pages {
+        padding: 20px;
+      }
+
+      paper-item {
+        color: var(--primary-text-color);
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+
+
+    <firebase-app
+      auth-domain="home-manager.firebaseapp.com"
+      database-url="https://home-manager.firebaseio.com"
+      api-key="AIzaSyDWfFeaKs3I-x3N2IIn8s9Vq0Fo8dSEJ44"></firebase-app>
+
+    <firebase-auth
+      id="auth"
+      user="{{app.user}}"
+      provider="google"></firebase-auth>
+
+    <firebase-document
+      path="/users/{{app.user.uid}}"
+      data="{{app.userData}}"></firebase-document>
+
+    <app-location route="{{route}}" use-hash-as-path></app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{data}}"></app-route>
+
+    <app-drawer-layout>
+      <app-drawer id="appdrawer">
+        <app-header>
+          <app-toolbar>
+            <div title>{{app.userData.name}}</div>
+          </app-toolbar>
+        </app-header>
+        <paper-menu hidden$="{{!app.user}}">
+          <paper-item active="{{isPathActive('shoppinglist', data.page)}}" on-click="navigateTo" data-path="shoppinglist">Einkaufszettel</paper-item>
+          <paper-item active="{{isPathActive('menulist', data.page)}}" on-click="navigateTo" data-path="menulist">Speisekarten</paper-item>
+          <paper-item active="{{isPathActive('profile', data.page)}}" on-click="navigateTo" data-path="profile">Profil</paper-item>
+          <paper-item on-click="logoutUser">Logout</paper-item>
+        </paper-menu>
+        <paper-menu hidden$="{{app.user}}">
+          <paper-item active="{{isPathActive('login', data.page)}}" on-click="navigateTo" data-path="login">Login</paper-item>
+        </paper-menu>
+      </app-drawer>
+      <app-header-layout>
+        <app-header>
+          <app-toolbar>
+            <paper-icon-button icon="menu" on-click="openDrawer"></paper-icon-button>
+            <div title>{{getPageTitle(data.page)}}</div>
+          </app-toolbar>
+        </app-header>
+        <iron-pages attr-for-selected="data-route" selected="[[data.page]]">
+          <div data-route="login">
+            <paper-button on-click="signInUser" raised>Mit Google einloggen</paper-button>
+          </div>
+
+          <div data-route="profile">
+            <paper-input value="{{app.userData.name}}" label="Name" required auto-validate error-message="Erforderlich!"></paper-input>
+            <paper-input type="email" value="{{app.userData.email}}" label="E-Mail" required auto-validate error-message="Erforderlich!"></paper-input>
+            <paper-button on-click="navigateTo" data-path="shoppinglist">Speichern</paper-button>
+          </div>
+
+          <div data-route="shoppinglist"><bahuma-shoppinglist app="{{app}}"></bahuma-shoppinglist></div>
+          <div data-route="menulist"><bahuma-menu-list app="{{app}}"></bahuma-menu-list></div>
+          <div data-route="shoppinglist-add"><bahuma-menu-list-add-form app="{{app}}"></bahuma-menu-list-add-form></div>
+        </iron-pages>
+      </app-header-layout>
+    </app-drawer-layout>
+
   </template>
 
   <script>
@@ -46,7 +102,123 @@
         activeTab: {
           type: Number,
           value: 0
+        },
+        app: {
+          type: Object,
+          value: {
+            user: undefined,
+            currentPage: 0
+          }
+        },
+        route: {
+          type: Object
         }
+      },
+
+      observers: [
+        '_onRoutePathChanged(route.path)',
+        '_onUserChanged(app.user)',
+        '_onUserDataChanged(app.userData)'
+      ],
+
+      _onRoutePathChanged: function(path) {
+        if (!path) {
+          this.set('route.path', '/shoppinglist');
+        }
+
+        if (!this.app.user && path != '/login') {
+          this.set('route.path', '/login');
+        }
+
+        if (this.app.userData) {
+          var userData = this.app.userData;
+
+          if (!userData.name || userData.name == "" || !userData.email || userData.email == "") {
+            this.set('route.path', '/profile');
+          }
+        }
+      },
+
+      _onUserChanged: function(user) {
+        if (user) {
+          this.set('route.path', '/shoppinglist');
+        } else {
+          this.set('route.path', '/login');
+        }
+      },
+
+      _onUserDataChanged: function(userData) {
+        if (userData) {
+          if (!userData.name || userData.name == "" || !userData.email || userData.email == "") {
+            this.set('route.path', '/profile');
+          }
+        }
+      },
+
+      signInUser: function() {
+        var self = this;
+
+        this.$.auth.signInWithPopup()
+          .then(function(data){
+            console.log(data);
+          });
+      },
+
+      logoutUser: function() {
+        this.$.auth.signOut();
+        this.$.appdrawer.close();
+      },
+
+      navigateTo: function(e) {
+        this.set('route.path', '/' + e.target.dataset.path);
+//        this.$.appdrawer.close();
+      },
+
+      getPageTitle: function(path) {
+        var titles = [
+          {
+            path: "login",
+            title: "Login"
+          },
+          {
+            path: "profile",
+            title: "Profil"
+          },
+          {
+            path: "shoppinglist",
+            title: "Einkaufszettel"
+          },
+          {
+            path: "menulist",
+            title: "Speisekarten"
+          },
+          {
+            path: "menulist-add",
+            title: "Speisekarte hinzufuegen"
+          }
+        ];
+
+        var title = null;
+
+        titles.forEach(function(element, index) {
+          if (element.path == path) {
+            title = element.title;
+          }
+        });
+
+        return title;
+      },
+
+      isPathActive: function(path, currentPath) {
+        return path == currentPath;
+      },
+
+      openDrawer: function() {
+        this.$.appdrawer.open();
+      },
+
+      test: function() {
+        this.set('app.userData.name', 'Max');
       }
     });
   </script>
